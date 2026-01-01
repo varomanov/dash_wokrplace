@@ -72,11 +72,24 @@ class Booking(Base):
     place: Mapped['Place'] = relationship(back_populates='bookings')
 
 
-def get_users():
+def get_all_users():
     with Session(engine) as session:
         stmt = select(Person).order_by(Person.fullname.asc())
         return [x.fullname for x in session.execute(stmt).scalars()]
     
+
+def get_all_places(date):
+    with Session(engine) as session:
+        stmt = select(Place).where(Place.is_active).order_by(Place.place.asc())
+        return [x.place for x in session.execute(stmt).scalars()]
+
+
+def get_places_on_date(date):
+    with Session(engine) as session:
+        stmt = select(Booking).where(Booking.booked_date == date)
+        return [[x.place, x.is_free] for x in session.scalars(stmt)]
+
+
 
 if __name__ == '__main__':
 

@@ -1,12 +1,13 @@
-from dash import Dash, html, dcc, Input, Output, State
+from dash import html
 import dash_bootstrap_components as dbc
 
-def booking_layout(user):
+def booking_layout():
     layout = html.Div([
         html.Div([
-            html.Div(html.Img(src='assets/logo_servier_180x36.png', width=80))
-        ], className='align-self-start'),
-        html.H1(f'Hello! {user}'),
-    ])
+            html.Div(html.Img(src='assets/logo_servier_180x36.png')),
+            html.P('Choose your name below:'),
+            html.Div(dbc.Select(options=[12,3]))
+        ])
+    ], className='container-login w-75 border-1')
 
     return layout

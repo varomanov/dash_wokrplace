@@ -1,0 +1,36 @@
+:root {
+    box-sizing: border-box;
+    font-size: .875em;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(244, 241, 241);
+    height: 100vh;
+}
+
+.main-container {
+    height: 100vh;
+    background-color: #fff;
+    padding: 10px;
+}
+
+@media screen and (min-width: 501px) {
+    .main-container {
+        min-width: 40%;
+        max-width: 501px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 500px) {
+    .main-container {
+        min-width: 100%;
+        max-width: 500px;
+    }
+}
